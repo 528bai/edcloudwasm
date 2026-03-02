@@ -1,4 +1,4 @@
-name = "edcloudwasm"
+name = "tight-frog-e2cf"
 main = "_worker.js"  # 你的 JS 逻辑代码
 compatibility_date = "2026-03-02"
 
@@ -6,13 +6,13 @@ compatibility_date = "2026-03-02"
 # --- worker环境变量配置 ---
 [vars]
 # VLESS 的 UUID
-UUID = "d342d11e-d424-4583-b36e-524ab1f0afa4"
+UUID = "5ee53b8f-921e-428f-a530-d21c1229d000"
 # Trojan 的密码
-PASSWORD = "666"
+PASSWORD = "333sss"
 # S5和HTTP 入站验证用户名 
-S5HTTPUSER = "admin"
+S5HTTPUSER = "333sss"
 # S5和HTTP入站验证密码
-S5HTTPPASS = "123456"
+S5HTTPPASS = "333sss"
 # 付费worker 可设置cpu时间限制
 # [limits]
 # cpu_ms = 300000
