@@ -10,6 +10,9 @@
   - Shadowsocks
   - SOCKS5
   - HTTP
+- **多传输方式与性能优化**
+  - 同时支持 **WebSocket** 和 **xHTTP** 和 **Grpc** 传输方式；
+  - 独家采用优化的 `manualPipe` 函数进行流量转发，相比传统stream流式的 `pipeTo` ，CPU 开销大幅降低 **6 倍**。
 - **WASM 加速解析**
   - 将复杂的协议解析、节点模板拼装、订阅转换前处理等逻辑封装在 `protocol.wasm` 中；
   - 使用 Rust 编写并编译为 WebAssembly，由 `_worker.js` 在 Worker 侧调用；
@@ -21,6 +24,15 @@
 ---
 
 ## 部署到 Cloudflare Workers ☁️
+
+> ⚠️ **重要警告（关于免费 Workers）**
+>
+> - 使用 **Cloudflare 免费 Workers 计划** 直接部署本项目时，当前实测可能出现 **1101 错误（Worker 内部异常）**，导致服务无法正常运行。
+> - 在 **付费 Workers 计划** 下部署可以正常工作。
+> - 使用 **Cloudflare Pages + Functions** 部署一切正常，不受上述限制。
+> - 免费 Worker 建议使用单文件 [五协议版本](https://github.com/1345695/edcloudwasm/tree/src/%E7%BA%AF%E4%BC%A0%E8%BE%93%E4%BB%A3%E7%A0%81)。
+>
+> **因此：如果你是免费账户，更推荐使用 _Cloudflare Pages_ 方式部署本项目。**
 
 项目根目录下的 `wrangler.toml` 已提供基础配置，推荐的部署流程如下。
 
@@ -164,6 +176,7 @@ mv protocol.opt.wasm protocol.wasm
 ## 鸣谢 🙏
 
 - [杨幂的脚 (cmliu)](https://github.com/cmliu/edgetunnel)
+- [AK大佬 (Alexandre_Kojeve)](https://t.me/Notif_Chat)
 - [天书 (HeroCore)](https://t.me/HeroCore)
 - [zizifn/edgetunnel](https://github.com/zizifn/edgetunnel)
 
